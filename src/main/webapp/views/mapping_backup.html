@@ -1,0 +1,49 @@
+
+	<div class="row">
+		<ui-select ng-model="mainObj.selectDestination"
+			ng-change="loadDestinationColumns()" theme="select2"
+			ng-disabled="disabled" style="width: 180px;"> <ui-select-match
+			placeholder="Select Destination Table">{{mainObj.selectDestination}}</ui-select-match>
+		<ui-select-choices
+			repeat="destination in destinations | filter:$select.search">
+		<div ng-bind-html="destination | highlight: $select.search"></div>
+		</ui-select-choices> </ui-select>
+
+		<ui-select ng-model="mainObj.selectDestinationColumns" theme="select2"
+			ng-disabled="disabled" style="width: 180px;"> <ui-select-match
+			placeholder="Select Destination Columns">{{mainObj.selectDestinationColumns}}</ui-select-match>
+		<ui-select-choices
+			repeat="destinationColumn in destinationColumns | filter:$select.search">
+		<div ng-bind-html="destinationColumn | highlight: $select.search"></div>
+		</ui-select-choices> </ui-select>
+
+		<ui-select ng-model="mainObj.selectSource"
+			ng-change="loadSourcesColumns()" theme="select2"
+			ng-disabled="disabled" style="width: 180px;"> <ui-select-match
+			placeholder="Select Source Table">{{mainObj.selectSource}}</ui-select-match>
+		<ui-select-choices repeat="source in sources | filter:$select.search">
+		<div ng-bind-html="source | highlight: $select.search"></div>
+		</ui-select-choices> </ui-select>
+
+		<ui-select ng-model="mainObj.selectSourceColumns" theme="select2"
+			ng-disabled="disabled" style="width: 180px;"> <ui-select-match
+			placeholder="Select Source Columns">{{mainObj.selectSourceColumns}}</ui-select-match>
+		<ui-select-choices
+			repeat="sourceColumn in sourceColumns | filter:$select.search">
+		<div ng-bind-html="sourceColumn | highlight: $select.search"></div>
+		</ui-select-choices> </ui-select>
+		
+		<a href="" id="addButton" class="btn btn-primary" ng-click="loadGridData()">Add</a>
+	</div>
+		
+	<div class="row">
+	<br>
+		   <!-- <div class="gridStyle" ng-grid="gridOptions" ></div> -->
+		   <table ng-table class="table">
+                <tr ng-repeat="user in users">
+                    <td data-title="'Name'">{{user.name}}</td>
+                    <td data-title="'Age'">{{user.age}}</td>
+                </tr>
+            </table>
+	</div>
+
